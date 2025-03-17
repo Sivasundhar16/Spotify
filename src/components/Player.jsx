@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
-import { assets, songsData } from "../assets/assets";
+import { assets } from "../assets/assets";
 import { Playercontext } from "../context/Playercontaxt";
 
 const Player = () => {
-  const { seekBar, seekBg, playStatus, play, pause } =
+  const { seekBar, seekBg, playStatus, play, pause, track, time } =
     useContext(Playercontext);
 
   return (
     <div className="h-[10%] bg-black flex justify-between items-center p-4 text-white">
       <div className="hidden lg:flex items-center gap-4">
-        <img className="w-12" src={songsData[0].image} alt="" />
+        <img className="w-12" src={track.image} alt="" />
         <div>
-          <p>{songsData[0].name}</p>
-          <p>{songsData[0].desc.slice(0, 12)}</p>
+          <p>{track.name}</p>
+          <p>{track.desc.slice(0, 12)}</p>
         </div>
       </div>
       <div className="flex flex-col items-center gap-1 m-auto">
@@ -43,7 +43,9 @@ const Player = () => {
           <img className="w-4 cursor-pointer " src={assets.loop_icon} alt="" />
         </div>
         <div className="flex item-center gap-5">
-          <p>2.00</p>
+          <p>
+            {time.currentTime.minute}:{time.currentTime.second}{" "}
+          </p>
           <div
             ref={seekBg}
             className="w-[60vh] max-w-[500px] h-1 mt-2 bg-gray-300 rounded-full cursor-pointer "
@@ -53,7 +55,9 @@ const Player = () => {
               className=" h-1 border-none w-0 bg-green-800 rounded-full"
             />
           </div>
-          <p>3.30</p>
+          <p>
+            {time.totalTime.minute}:{time.totalTime.second}{" "}
+          </p>
         </div>
       </div>
       <div className="hidden lg:flex items-center gap-2 opacity-75">
