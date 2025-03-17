@@ -1,11 +1,11 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { Playercontext } from "../context/Playercontaxt";
 
 const Songitem = ({ name, image, desc, id }) => {
-  const navigate = useNavigate();
+  const { playwithId } = useContext(Playercontext);
   return (
     <div
-      onClick={() => navigate(`/song/${id}`)}
+      onClick={() => playwithId(id)}
       className="min-w-[180px] p-2 px-3 rounded cursor-pointer hover:bg-[#ffffff26] "
     >
       <img className="rounded" src={image} alt="" />
