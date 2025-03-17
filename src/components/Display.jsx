@@ -6,7 +6,7 @@ import { albumsData } from "../assets/assets";
 
 const Display = () => {
   const displayuseref = useRef();
-  const location = useLocation();
+  const location = useLocation(); //gives current path
   const isAlbum = location.pathname.includes("album");
 
   const albumId = isAlbum ? location.pathname.slice(-1) : "";
@@ -19,7 +19,7 @@ const Display = () => {
     } else {
       displayuseref.current.style.background = `#121212`;
     }
-  });
+  }); //component epo laam render aakutho apo laam use effect run aakanum. so dependency array illa
 
   return (
     <div
